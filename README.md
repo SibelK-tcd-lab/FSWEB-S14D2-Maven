@@ -13,8 +13,8 @@ Sınıf yazmaya doyduğunuz bir proje olması dileklerimle....
 ### Lamp
 * org.example paketi altında model isminde bir paket oluşturunuz.
 * org.example.model paketi altında Lamp isimli bir sınıf yazınız.
-* Lamp sınıfı için 3 tane ```instance variable``` tanımlamalıyız. ```style``` tipi LampType isminde bir enum olmalı. ```battery``` tipi boolean olmalı. ```globRating``` tipi int olmalı. 
-* org.example.model.enums paketi altında LampType isminde bir enum tanımlayınız. NORMAL,NEON ve LAVA değerlerini almalı.
+* Lamp sınıfı için 3 tane ```instance variable``` tanımlamalıyız. ```style``` tipi model.enums.LampType isminde bir enum olmalı. ```battery``` tipi boolean olmalı. ```globRating``` tipi int olmalı. 
+* org.example.model.enums paketi altında model.enums.LampType isminde bir enum tanımlayınız. NORMAL,NEON ve LAVA değerlerini almalı.
 * Lamp sınıfının tüm değişkenleri `private` olmalı. Lamp sınıfı için 3 değişkeninde eklenebileceği tek bir ```constructor``` olmalı.
 * Lamp sınıfı için toplamda 4 metod yazmamız gerekiyor. ```turnOn``` herhangi bir değer dönmeyecek. Sadece 'Lamp is being turned on.' mesajının ekrana basacak.
 * ```getStyle()``` style değişkenin değerini dönmeli. ```isBattery()``` battery değişkeninin değerini dönmeli. ```getGlobalRating()``` globalRating değişkeninin değerini dönmeli.
@@ -34,13 +34,13 @@ Sınıf yazmaya doyduğunuz bir proje olması dileklerimle....
 
 ### Carpet
 * org.example.model paketi altında Carpet isminde bir sınıf yazınız.
-* Carpet sınıfı için 3 adet ```instance variable``` tanımlayınız. ```int width, int height, PaintColor color``` Hepsi private olmalı.
-* org.example.model.enums paketi altında PaintColor isminde bir enum tanımlayınız. RED,GREEN ve WHITE değerlerini almalı.
+* Carpet sınıfı için 3 adet ```instance variable``` tanımlayınız. ```int width, int height, model.enums.PaintColor color``` Hepsi private olmalı.
+* org.example.model.enums paketi altında model.enums.PaintColor isminde bir enum tanımlayınız. RED,GREEN ve WHITE değerlerini almalı.
 * Carpet sınıfı için constructor & getter metodlarını yazınız.
 * Carpet sınıfı içerisinde ```lying``` isminde bir metod tanımlayınız. Herhangi bir değer dönmeyecek. Sadece 'Carpet is lying on Bedroom floor.' mesajını ekrana basacak.
 
 ### Ceiling
-* org.example.model paketi altında Ceiling isminde bir sınıf yazınız. Ceiling sınıfının 2 tane ```instance variable``` olmalı. ```height``` ve ```color```. height int tipinde olmalı color PaintColor isminde bir enum olmalı ve ikisi de private olmalı.
+* org.example.model paketi altında Ceiling isminde bir sınıf yazınız. Ceiling sınıfının 2 tane ```instance variable``` olmalı. ```height``` ve ```color```. height int tipinde olmalı color model.enums.PaintColor isminde bir enum olmalı ve ikisi de private olmalı.
 * Ceiling sınıfının bir ```constructor``` metodu olmalı. 2 değişkenine de değer atamalı.
 * Ceiling sınıfının ```getHeight()``` adında bir metodu olmalı. height değerini dönmeli. ```getColor``` adında bir metodu olmalı ve paintedColor değerini dönmeli.
 * Ceiling sınıfının ```create``` isimli bir metodu olmalı. Ekrana 'Ceiling has been built.' yazdırmalı.
