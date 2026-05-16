@@ -1,6 +1,6 @@
 package org.example.model; // model klasörünün içinde olduğu için paket adı böyle olmalı
-import org.example.model.enums.*;
-import org.example.model.enums.PaintColor; // PaintColor enum'ını import ediyoruz
+
+import org.example.model.enums.PaintColor;
 
 public class Carpet {
     // Instance variables (Hepsi private olmalı)

@@ -1,6 +1,6 @@
 package org.example;
 
-// 1. ÖNEMLİ ADIM: Taşınan model ve enum paketlerini import ediyoruz
+
 import org.example.model.*;
 import org.example.model.enums.*;
 
