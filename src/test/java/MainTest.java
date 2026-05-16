@@ -1,8 +1,9 @@
 package org.example;
 
 // Model ve Enum sınıflarını içeri aktarıyoruz
-import org.example.model.*;
-import org.example.model.enums.*;
+import enums.LampType;
+import enums.PaintColor;
+import model.*;
 
 // JUnit 5 kütüphaneleri
 import org.junit.jupiter.api.BeforeEach;

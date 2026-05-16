@@ -1,4 +1,4 @@
-package org.example.model.enums;
+package enums;
 
 public enum PaintColor {
     RED, BLUE, WHITE, GREEN;

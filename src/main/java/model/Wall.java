@@ -1,4 +1,4 @@
-package org.example.model;
+package model;
 
 public class Wall {
     private String direction;

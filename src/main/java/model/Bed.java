@@ -1,4 +1,4 @@
-package org.example.model;
+package model;
 
 public class Bed {
     private String style;
