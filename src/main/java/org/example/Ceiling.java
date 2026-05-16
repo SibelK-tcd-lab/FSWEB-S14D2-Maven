@@ -1,6 +1,5 @@
-package model;
-import enums.PaintColor;
-
+package org.example.model;
+import org.example.model.enums.*;
 public class Ceiling {
     private int height;
     private PaintColor color;

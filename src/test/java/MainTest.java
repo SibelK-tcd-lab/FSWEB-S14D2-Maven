@@ -1,21 +1,17 @@
 package org.example;
 
-// Model ve Enum sınıflarını içeri aktarıyoruz
-import enums.LampType;
-import enums.PaintColor;
-import model.*;
+// 1. ÖNEMLİ ADIM: Taşınan model ve enum paketlerini import ediyoruz
+import org.example.model.*;
+import org.example.model.enums.*;
 
-// JUnit 5 kütüphaneleri
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-// Yardımcı Java kütüphaneleri
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.lang.reflect.Field;
 
-// Assertion kütüphaneleri
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -33,7 +29,7 @@ public class MainTest {
 
     @BeforeEach
     void setUp() {
-        // Objeleri başlatıyoruz
+        // Nesneleri doğru parametre tipleriyle başlatıyoruz
         lamp = new Lamp(LampType.NORMAL, true, 80);
         bed = new Bed("Double", 4, 1, 2, 2);
         wardrobe = new Wardrobe(2, 4, 40.0);
@@ -44,7 +40,7 @@ public class MainTest {
         wall3 = new Wall("East");
         wall4 = new Wall("West");
 
-        // Bedroom Composition kurulumu
+        // Bedroom Composition kurulumunu gerçekleştiriyoruz
         bedroom = new Bedroom("Master Bedroom", wall1, wall2, wall3, wall4,
                 ceiling, bed, lamp, wardrobe, carpet);
     }
@@ -56,13 +52,13 @@ public class MainTest {
         Field batteryField = lamp.getClass().getDeclaredField("battery");
         Field globalRatingField = lamp.getClass().getDeclaredField("globRating");
 
-        // 2 değeri 'private' olduğunu doğrular
+        // 2 değeri Java Reflection API'de 'private' modifier'ı doğrular
         assertEquals(2, styleField.getModifiers(), "Style field must be private");
         assertEquals(2, batteryField.getModifiers(), "Battery field must be private");
         assertEquals(2, globalRatingField.getModifiers(), "GlobRating field must be private");
     }
 
-    @DisplayName("Lamp turnOn metodu mesaj basıyor mu?")
+    @DisplayName("Lamp turnOn metodu doğru mesajı basıyor mu?")
     @Test
     public void testLampTurnOnMethod() {
         PrintStream originalOut = System.out;
@@ -71,11 +67,11 @@ public class MainTest {
 
         lamp.turnOn();
 
-        System.setOut(originalOut); // Konsolu geri düzeltiyoruz
+        System.setOut(originalOut); // Konsol çıktısını sisteme geri iade ediyoruz
         assertThat(out.toString(), containsString("Lamp is being turned on."));
     }
 
-    @DisplayName("Bed make metodu mesaj basıyor mu?")
+    @DisplayName("Bed make metodu doğru mesajı basıyor mu?")
     @Test
     public void testBedMakeMethod() {
         PrintStream originalOut = System.out;
@@ -88,17 +84,45 @@ public class MainTest {
         assertThat(out.toString(), containsString("The bed is being made."));
     }
 
-    @DisplayName("Bedroom tüm bileşenleri barındırıyor mu?")
+    @DisplayName("Wardrobe add metodu doğru mesajı basıyor mu?")
+    @Test
+    public void testWardrobeAddMethod() {
+        PrintStream originalOut = System.out;
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        wardrobe.add();
+
+        System.setOut(originalOut);
+        assertThat(out.toString(), containsString("Wardrobe added into Bedroom."));
+    }
+
+    @DisplayName("Carpet lying metodu doğru mesajı basıyor mu?")
+    @Test
+    public void testCarpetLyingMethod() {
+        PrintStream originalOut = System.out;
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        carpet.lying();
+
+        System.setOut(originalOut);
+        assertThat(out.toString(), containsString("Carpet is lying on Bedroom floor."));
+    }
+
+    @DisplayName("Bedroom tüm composition bileşenlerini barındırıyor mu?")
     @Test
     public void testBedroomComposition() {
-        assertNotNull(bedroom.getLamp());
-        assertNotNull(bedroom.getBed());
-        assertNotNull(bedroom.getWardrobe());
-        assertNotNull(bedroom.getWall1());
+        assertNotNull(bedroom.getLamp(), "Lamp cannot be null");
+        assertNotNull(bedroom.getBed(), "Bed cannot be null");
+        assertNotNull(bedroom.getWardrobe(), "Wardrobe cannot be null");
+        assertNotNull(bedroom.getCarpet(), "Carpet cannot be null");
+        assertNotNull(bedroom.getCeiling(), "Ceiling cannot be null");
+        assertNotNull(bedroom.getWall1(), "Wall1 cannot be null");
         assertEquals("Master Bedroom", bedroom.getName());
     }
 
-    @DisplayName("Ceiling ve Wall metotları doğru çalışıyor mu?")
+    @DisplayName("Ceiling ve Wall create metotları doğru çalışıyor mu?")
     @Test
     public void testStructureMethods() {
         PrintStream originalOut = System.out;

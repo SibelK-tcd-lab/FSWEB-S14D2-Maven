@@ -1,6 +1,5 @@
-package model;
-import enums.LampType;
-
+package org.example.model;
+import org.example.model.enums.*;
 public class Lamp {
     private LampType style;
     private boolean battery;
